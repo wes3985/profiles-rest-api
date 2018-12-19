@@ -5,6 +5,7 @@ from rest_framework.response import Response # 26
 from rest_framework import status # 30
 
 from . import serializers       # 30
+from . import models #42
 
 # Create your views here.
 class HelloApiView(APIView):
@@ -103,3 +104,9 @@ class HelloViewSet(viewsets.ViewSet):
     def destroy(self, request, pk=None):
         """Handles removing an object"""
         return Response({'http_method': 'DELETE'})
+
+#42
+class UserProfileViewSet(viewsets.ModelViewSet):
+    """Handles creating and updating profiles"""
+    serializer_class = serializers.UserProfileSerializer
+    queryset = models.UserProfile.objects.all()
